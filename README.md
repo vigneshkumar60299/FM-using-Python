@@ -26,10 +26,36 @@ Algorithm
 5.	Generate FM Signal: Apply the FM modulation formula to obtain the modulated signal.
 6.	Plot the Signals: Use Matplotlib to plot the message signal, carrier signal, and modulated signal.
 
-Program
+Program 
+```
+import numpy as np
+import matplotlib.pyplot as plt
+Am = 7.8
+Ac = 15.6
+fm = 267
+fc = 2670
+fs = 26700
+t = np.arange(0, 2/fm, 1/fs)
+B = 5.75
+m = Am * np.cos(2 * np.pi * fm * t)
+plt.subplot(3, 1, 1)
+plt.plot(t, m)
+c = Ac * np.cos(2 * np.pi * fc * t)
+plt.subplot(3, 1, 2)
+plt.plot(t, c)
+efm = Ac * np.cos(2 * np.pi * fc * t + B * np.sin(2 * np.pi * fm * t))
+plt.subplot(3, 1, 3)
+plt.plot(t, efm)
+plt.tight_layout()
+plt.show()
+```
+
+
 
 
 Output Waveform
+<img width="630" height="466" alt="Screenshot 2025-12-04 125442" src="https://github.com/user-attachments/assets/386416ff-e626-4af0-bc78-e714c2aeb1cc" />
+
 
 
 Tabular Column
